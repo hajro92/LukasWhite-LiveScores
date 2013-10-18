@@ -15,7 +15,7 @@ class Scores implements MessageComponentInterface {
 
         $this->games = Fixtures::random();
 
-        var_dump($this->games);
+        //var_dump($this->games);
     }
 
     public function onOpen(ConnectionInterface $conn) {
@@ -24,6 +24,8 @@ class Scores implements MessageComponentInterface {
 
         // New connection, send it the current set of matches
         $conn->send(json_encode(array('type' => 'init', 'games' => $this->games)));
+        
+        //var_dump($conn->send(json_encode(array('type' => 'init', 'games' => $this->games))));
 
         echo "New connection! ({$conn->resourceId})\n";
     }

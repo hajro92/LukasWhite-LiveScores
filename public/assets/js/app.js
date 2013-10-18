@@ -2,12 +2,15 @@ var games;
 
 var conn = new WebSocket('ws://localhost:8080');
 conn.onopen = function(e) {
-    
+	
+	var message = $.parseJSON('{"type":"init","games":{"52613fc668b94":{"id":"52613fc668b94","home":{"team":"West Ham","score":0},"away":{"team":"Man City","score":0}},"52613fc668b9b":{"id":"52613fc668b9b","home":{"team":"Sunderland","score":0},"away":{"team":"Newcastle","score":0}},"52613fc668b9f":{"id":"52613fc668b9f","home":{"team":"Cardiff","score":0},"away":{"team":"Hull","score":0}},"52613fc668ba2":{"id":"52613fc668ba2","home":{"team":"Swansea","score":0},"away":{"team":"West Brom","score":0}},"52613fc668ba4":{"id":"52613fc668ba4","home":{"team":"Man Utd","score":0},"away":{"team":"Southampton","score":0}},"52613fc668ba6":{"id":"52613fc668ba6","home":{"team":"Norwich","score":0},"away":{"team":"Liverpool","score":0}},"52613fc668ba8":{"id":"52613fc668ba8","home":{"team":"Aston Villa","score":0},"away":{"team":"Crystal Palace","score":0}}}}');
+	setupScoreboard(message);
 };
 
 conn.onmessage = function(e) {    
-    
+	
 	var message = $.parseJSON(e.data);
+	
 
 	switch (message.type) {
 		
